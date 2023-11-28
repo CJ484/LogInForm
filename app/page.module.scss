@@ -1,0 +1,49 @@
+@import './globals.scss';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 50vw;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    border: 2px solid $blue3;
+    .form__title {
+        margin-bottom: 2rem;
+    }
+    .form__input {
+        margin: 0.1rem;
+    }
+    .form__button {
+        padding: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        &:focus {
+        outline: none;
+        }
+    }
+}
