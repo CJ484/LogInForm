@@ -1,9 +1,13 @@
 import { Input, Button } from "@mui/joy";
-import styles from "./page.module.scss";
-
+import styles from "../../page.module.scss";
 
 const CreateNewUser = () => {
-    return <form className={styles.form}>
+    const submission = (e: any) => {
+        e.preventDefault();
+        console.log("User Log In Submitted");
+    }
+    
+    return <form onSubmit={submission} className={styles.form}>
         <h2>Create A Free Account</h2>
         <Input className="form__input" placeholder="First Name" />
         <Input className="form__input" placeholder="Last Name" />

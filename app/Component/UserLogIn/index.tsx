@@ -1,11 +1,16 @@
 import {Input, Button} from "@mui/joy";
 import Link from "next/link";
-import styles from "./page.module.scss";
+import styles from "../../page.module.scss";
 
 
 const UserLogIn = () => {
+    const submission = (e: any) => {
+        e.preventDefault();
+        console.log("User Log In Submitted");
+    }
+
     return (
-      <form className={styles.form}>
+      <form onSubmit={submission} className={styles.form}>
         <h2>Please Enter Your Credentials or</h2>
         <Link href="#">
           <h2>Create A Free Account</h2>
