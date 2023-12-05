@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./page.module.scss";
+import styles from "./Styles/page.module.scss";
 import Link from "next/link";
 
 const Home = () => {
