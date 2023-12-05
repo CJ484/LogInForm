@@ -16,6 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Authorization App</title>
+      </head>
       <body className={inter.className}>
         {children}
         <div id="particles-js"></div>
