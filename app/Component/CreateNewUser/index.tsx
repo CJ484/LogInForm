@@ -1,6 +1,6 @@
 'use client';
 import { Input, Button } from "@mui/joy";
-import styles from "../../page.module.scss";
+import styles from "../../Styles/page.module.scss";
 
 const CreateNewUser = () => {
   const submission = (e: any) => {

@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import '../../Styles/page.module.scss';
 
 type User = {
   nameInput: string;
