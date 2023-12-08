@@ -1,5 +1,6 @@
 
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
 const DisplayDataPage = () => {
   const prisma = new PrismaClient();
@@ -21,6 +22,9 @@ const DisplayDataPage = () => {
 
   return (
     <div>
+      <Link href="/">
+        Go back
+      </Link>
       <h1>Display Data</h1>
       {allUsers()}
     </div>

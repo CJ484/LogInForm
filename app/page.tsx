@@ -15,6 +15,10 @@ const Home = () => {
         <Link href="/pages/register">
           Register
         </Link>
+        {" "}
+        <Link href="/pages/displaydata">
+          DisplayData
+        </Link>
       </div>
     </main>
   );
