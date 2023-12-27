@@ -2,8 +2,10 @@
 import React from "react";
 import styles from "./Styles/page.module.scss";
 import Link from "next/link";
+import * as dotenv from "dotenv";
 
 const Home = () => {
+  dotenv.config();
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Authorization App</h1>
