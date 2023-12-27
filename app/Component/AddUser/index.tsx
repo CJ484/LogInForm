@@ -1,20 +1,38 @@
-import { PrismaClient } from "@prisma/client";
-import '../../Styles/page.module.scss';
+import axios from "axios";
 
 type User = {
-  nameInput: string;
+  firstNameInput: string;
+  lastNameInput: string;
   emailInput: string;
+  passwordCypherInput: string;
 };
 
-const AddUser = async ({ nameInput, emailInput }: User) => {
-  const prisma = new PrismaClient();
-  await prisma.user.create({
-    data: {
-      name: nameInput,
-      email: emailInput,
+const AddUser = async ({
+  firstNameInput,
+  lastNameInput,
+  emailInput,
+  passwordCypherInput,
+}: User) => {
+
+  const apiUrlAdd = process.env.REACT_APP_API_URL_ADD;
+  
+  await axios.post(apiUrlAdd!, {
+    firstNameInput: firstNameInput,
+    lastNameInput: lastNameInput,
+    emailInput: emailInput,
+    passwordCypherInput: passwordCypherInput,
+  } as any, {
+    headers: {
+      "Content-Type": "application/json",
     },
+  })
+  .then((response) => {
+    return response.data.results;
+  })
+  .catch((error) => {
+    console.error(error);
+    return error;
   });
-  return console.log("User has been added");
 };
 
 export default AddUser;
