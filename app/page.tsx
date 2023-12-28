@@ -9,16 +9,14 @@ const Home = () => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Authorization App</h1>
-      <div>
-        <Link href="/pages/login">
+      <div className={styles.navigation}>
+        <Link className={styles.nav_button} href="/pages/login">
           Log in
-        </Link>
-        {" "}
-        <Link href="/pages/register">
+        </Link>{" "}
+        <Link className={styles.nav_button} href="/pages/register">
           Register
-        </Link>
-        {" "}
-        <Link href="/pages/displaydata">
+        </Link>{" "}
+        <Link className={styles.nav_button} href="/pages/displaydata">
           DisplayData
         </Link>
       </div>

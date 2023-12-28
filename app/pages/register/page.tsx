@@ -1,10 +1,8 @@
 import { CreateNewUser } from "@/app/Component"
-import Link from "next/link";
-
+import styles from "@/app/Styles/page.module.scss";
 const register = () => {
     return (
-      <div>
-        <Link href="/">Go back</Link>
+      <div className={styles.page}>
         <CreateNewUser />
       </div>
     );
