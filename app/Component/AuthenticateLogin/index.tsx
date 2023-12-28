@@ -1,4 +1,5 @@
 import axios from "axios";
+import dotenv from "dotenv";
 
 type AuthenticateLoginTypes = {
   email: string;
@@ -9,7 +10,10 @@ const AuthenticateLogin = async ({
   email,
   password,
 }: AuthenticateLoginTypes) => {
-  const apiUrlAuth = process.env.REACT_APP_API_URL_AUTH;
+  dotenv.config();
+  const apiUrlAuth = process.env.NEXT_PUBLIC_API_URL_AUTH;
+  console.log(apiUrlAuth);
+  
   await axios
     .post(apiUrlAuth!, {
       // @ts-ignore

@@ -14,7 +14,9 @@ const AddUser = async ({
   passwordCypherInput,
 }: User) => {
 
-  const apiUrlAdd = process.env.REACT_APP_API_URL_ADD;
+  const apiUrlAdd = process.env.NEXT_PUBLIC_API_URL_ADD;
+  console.log(apiUrlAdd);
+  
   
   await axios.post(apiUrlAdd!, {
     firstNameInput: firstNameInput,

@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 
 const DisplayDataPage = () => {
-  const apiUrlDisplay = process.env.REACT_APP_API_URL_DISPLAY;
+  const apiUrlDisplay = process.env.NEXT_PUBLIC_API_URL_DISPLAY;
   const allUsers = async () => {
     const data = await axios
       .get(apiUrlDisplay!, {

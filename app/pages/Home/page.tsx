@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = () => {
   const [accountInfo, setAccountInfo] = useState({} as any);
   const [logInToken, setLogInToken] = useState("" as String);
-  const apiUrlLocate = process.env.REACT_APP_API_URL_LOCATE;
+  const apiUrlLocate = process.env.NEXT_PUBLIC_API_URL_LOCATE;
 
   useEffect(() => {
     setTimeout(() => {
