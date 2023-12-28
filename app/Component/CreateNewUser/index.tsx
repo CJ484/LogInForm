@@ -3,6 +3,7 @@ import { AddUser } from "..";
 import { useState } from "react";
 import { isEqual, isEmpty } from "lodash";
 import { Input, Button } from "@mui/joy";
+import BackButton from "@/app/assets/symbols/arrow_left";
 import styles from "../../Styles/page.module.scss";
 import Link from "next/link";
 
@@ -62,38 +63,41 @@ const CreateNewUser = () => {
 
   return (
     <form onSubmit={submission} className={styles.form}>
-      <Link href="../pages/login">Already have an Account? Log in Here!</Link>
+      <Link href="/" className={styles.backButton}><BackButton />Go back</Link>
+      <h2 className={styles.form_title}>Creating an Account is Easy</h2>
+      <h3 className={styles.form_title}>Just fill out the form below!</h3>
+      <Link href="../pages/login" className={styles.links}>Already have an Account? Log in Here!</Link>
       <Input
-        className="form__input"
+        className={styles.form_input}
         placeholder="First Name"
         value={firstNameInput}
         onChange={(e) => setFirstNameInput(e.target.value)}
       />
       <Input
-        className="form__input"
+        className={styles.form_input}
         placeholder="Last Name"
         value={lastNameInput}
         onChange={(e) => setLastNameInput(e.target.value)}
       />
       <Input
-        className="form__input"
+        className={styles.form_input}
         placeholder="Email"
         value={emailInput}
         onChange={(e) => setEmailInput(e.target.value)}
       />
       <Input
-        className="form__input"
+        className={styles.form_input}
         placeholder="Password"
         value={passwordCypherInput}
         onChange={(e) => setPasswordCypherInput(e.target.value)}
       />
       <Input
-        className="form__input"
+        className={styles.form_input}
         placeholder="Confirm Password"
         value={passwordConfirmInput}
         onChange={(e) => setPasswordConfirmInput(e.target.value)}
       />
-      <Button type="submit">Submit</Button>
+      <Button className={styles.form_button} type="submit">Create</Button>
     </form>
   );
 };
