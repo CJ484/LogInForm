@@ -3,9 +3,11 @@ import { AddUser } from "..";
 import { useState } from "react";
 import { isEqual } from "lodash";
 import { Input, Button } from "@mui/joy";
+import toast, { Toaster } from "react-hot-toast";
 import BackButton from "@/app/assets/symbols/arrow_left";
 import styles from "../../Styles/page.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CreateNewUser = () => {
   const [firstNameInput, setFirstNameInput] = useState("");
@@ -13,11 +15,10 @@ const CreateNewUser = () => {
   const [emailInput, setEmailInput] = useState("");
   const [passwordCypherInput, setPasswordCypherInput] = useState("");
   const [passwordConfirmInput, setPasswordConfirmInput] = useState("");
+  const { push } = useRouter();
 
   const isFormValid = () => {
-    if (
-      isEqual(passwordCypherInput, passwordConfirmInput)
-    ) {
+    if (isEqual(passwordCypherInput, passwordConfirmInput)) {
       return true;
     } else {
       return false;
@@ -35,10 +36,8 @@ const CreateNewUser = () => {
   const submission = async (e: any) => {
     e.preventDefault();
     if (!isFormValid()) {
-      console.log("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
-    } else {
-      console.log("Passwords match");
     }
     if (
       !AddUser({
@@ -48,58 +47,69 @@ const CreateNewUser = () => {
         passwordCypherInput: passwordCypherInput,
       }) === false
     ) {
-      console.log("User Creation Successful");
-      
+      toast.success("User Creation Successful");
       resetForm();
+      push("/pages/login");
     } else {
-      console.log("User Creation Failed");
+      toast.error("User Creation Failed");
       return;
     }
   };
 
   return (
-    <form onSubmit={submission} className={styles.form}>
-      <Link href="/" className={styles.backButton}><BackButton />Go back</Link>
-      <h2 className={styles.form_title}>Creating an Account is Easy</h2>
-      <h3 className={styles.form_title}>Just fill out the form below!</h3>
-      <Link href="../pages/login" className={styles.links}>Already have an Account? Log in Here!</Link>
-      <Input
+    <>
+      <form onSubmit={submission} className={styles.form}>
+        <Link href="/" className={styles.backButton}>
+          <BackButton />
+          Go back
+        </Link>
+        <h2 className={styles.form_title}>Creating an Account is Easy</h2>
+        <h3 className={styles.form_title}>Just fill out the form below!</h3>
+        <Link href="../pages/login" className={styles.links}>
+          Already have an Account? Log in Here!
+        </Link>
+        <Input
+          required
+          className={styles.form_input}
+          placeholder="First Name"
+          value={firstNameInput}
+          onChange={(e) => setFirstNameInput(e.target.value)}
+        />
+        <Input
+          required
+          className={styles.form_input}
+          placeholder="Last Name"
+          value={lastNameInput}
+          onChange={(e) => setLastNameInput(e.target.value)}
+        />
+        <Input
+          required
+          className={styles.form_input}
+          placeholder="Email"
+          value={emailInput}
+          onChange={(e) => setEmailInput(e.target.value)}
+        />
+        <Input
+          required
+          className={styles.form_input}
+          placeholder="Password"
+          value={passwordCypherInput}
+          onChange={(e) => setPasswordCypherInput(e.target.value)}
+        />
+        <Input
         required
-        className={styles.form_input}
-        placeholder="First Name"
-        value={firstNameInput}
-        onChange={(e) => setFirstNameInput(e.target.value)}
-      />
-      <Input
-        required
-        className={styles.form_input}
-        placeholder="Last Name"
-        value={lastNameInput}
-        onChange={(e) => setLastNameInput(e.target.value)}
-      />
-      <Input
-        required
-        className={styles.form_input}
-        placeholder="Email"
-        value={emailInput}
-        onChange={(e) => setEmailInput(e.target.value)}
-      />
-      <Input
-        required
-        className={styles.form_input}
-        placeholder="Password"
-        value={passwordCypherInput}
-        onChange={(e) => setPasswordCypherInput(e.target.value)}
-      />
-      <Input
-        required
+        
         className={styles.form_input}
         placeholder="Confirm Password"
         value={passwordConfirmInput}
         onChange={(e) => setPasswordConfirmInput(e.target.value)}
       />
-      <Button className={styles.form_button} type="submit">Create</Button>
-    </form>
+        <Button className={styles.form_button} type="submit">
+          Create
+        </Button>
+      </form>
+      <Toaster />
+    </>
   );
 };
 
