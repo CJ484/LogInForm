@@ -48,12 +48,14 @@ const UserLogIn = () => {
           <h3>or Create an Account</h3>
         </a>
         <Input
+          required
           className={styles.form_input}
           placeholder="Email"
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
         />
         <Input
+          required
           className={styles.form_input}
           placeholder="Password"
           value={passwordInput}

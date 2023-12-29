@@ -1,7 +1,7 @@
 "use client";
 import { AddUser } from "..";
 import { useState } from "react";
-import { isEqual, isEmpty } from "lodash";
+import { isEqual } from "lodash";
 import { Input, Button } from "@mui/joy";
 import BackButton from "@/app/assets/symbols/arrow_left";
 import styles from "../../Styles/page.module.scss";
@@ -16,11 +16,7 @@ const CreateNewUser = () => {
 
   const isFormValid = () => {
     if (
-      isEqual(passwordCypherInput, passwordConfirmInput) ||
-      isEmpty(passwordCypherInput) ||
-      isEmpty(firstNameInput) ||
-      isEmpty(lastNameInput) ||
-      isEmpty(emailInput)
+      isEqual(passwordCypherInput, passwordConfirmInput)
     ) {
       return true;
     } else {
@@ -68,30 +64,35 @@ const CreateNewUser = () => {
       <h3 className={styles.form_title}>Just fill out the form below!</h3>
       <Link href="../pages/login" className={styles.links}>Already have an Account? Log in Here!</Link>
       <Input
+        required
         className={styles.form_input}
         placeholder="First Name"
         value={firstNameInput}
         onChange={(e) => setFirstNameInput(e.target.value)}
       />
       <Input
+        required
         className={styles.form_input}
         placeholder="Last Name"
         value={lastNameInput}
         onChange={(e) => setLastNameInput(e.target.value)}
       />
       <Input
+        required
         className={styles.form_input}
         placeholder="Email"
         value={emailInput}
         onChange={(e) => setEmailInput(e.target.value)}
       />
       <Input
+        required
         className={styles.form_input}
         placeholder="Password"
         value={passwordCypherInput}
         onChange={(e) => setPasswordCypherInput(e.target.value)}
       />
       <Input
+        required
         className={styles.form_input}
         placeholder="Confirm Password"
         value={passwordConfirmInput}
