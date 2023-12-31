@@ -1,16 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { LocateUser } from "../../api/index";
 
 const Home = () => {
   const [accountInfo, setAccountInfo] = useState({} as any);
   const [logInToken, setLogInToken] = useState("" as String);
-  const apiUrlLocate = process.env.NEXT_PUBLIC_API_URL_LOCATE;
 
   useEffect(() => {
     setTimeout(() => {
-      console.log('checking for session token');
-      
       const idToken: any = sessionStorage.getItem("sessionToken");
       if (idToken) {
         setLogInToken(idToken);
@@ -20,30 +17,13 @@ const Home = () => {
 
   useEffect(() => {
     const idToken: any = sessionStorage.getItem("sessionToken");
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(apiUrlLocate!, {
-          id: idToken,
-
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
-
-        const datainfo = response.data.user;
-        console.log(datainfo);
-        setAccountInfo(datainfo);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     // Check if idToken is available before making the request
     if (idToken) {
-      fetchData();
+      LocateUser(idToken).then((data) => {
+        setAccountInfo(data);
+      });
     }
-  }, [logInToken]); // Only re-run the effect if idToken changes
+  }, [logInToken]);
 
   return (
     <div>

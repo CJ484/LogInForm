@@ -1,5 +1,5 @@
 "use client";
-import { AddUser } from "..";
+import { AddUser } from "../../api";
 import { useState } from "react";
 import { isEqual } from "lodash";
 import { Input, Button } from "@mui/joy";

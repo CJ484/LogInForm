@@ -2,7 +2,6 @@
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { AuthenticateLogin } from "..";
 import { Button } from "@mui/joy";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
@@ -12,9 +11,10 @@ import {
   InputAdornment,
   FilledInput,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
+import AuthenticateLogin from "../../api/AuthenticateLogin";
 import BackButton from "@/app/assets/symbols/arrow_left";
 import styles from "../../Styles/page.module.scss";
-import { useRouter } from "next/navigation";
 
 const UserLogIn = () => {
   const [showPassword, setShowPassword] = useState(false);
