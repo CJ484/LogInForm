@@ -30,16 +30,22 @@ const UserLogIn = () => {
 
   const submission = (e: any) => {
     e.preventDefault();
-    if (
-      !AuthenticateLogin({ email: emailInput, password: passwordInput }) ===
-      false
-    ) {
-      toast.success("Log In Successful");
-      resetForm();
-      setLogInStatus(true);
-    } else {
-      toast.error("Log In Failed");
-    }
+    toast
+      .promise(
+        AuthenticateLogin({ email: emailInput, password: passwordInput }),
+        {
+          loading: "Logging In",
+          success: "Log In Successful",
+          error: (err) => `${err.toString()}`,
+        }
+      )
+      .then(() => {
+        resetForm();
+        setLogInStatus(true);
+      })
+      .catch((error) => {
+        return error;
+      });
   };
 
   const handleClickShowPassword = () => {
@@ -71,6 +77,7 @@ const UserLogIn = () => {
         <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
           <InputLabel htmlFor="filled-adornment-email">Email</InputLabel>
           <FilledInput
+            required
             id="filled-adornment-email"
             value={emailInput}
             onChange={(e) => setEmailInput(e.target.value)}
@@ -79,6 +86,7 @@ const UserLogIn = () => {
         <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
           <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
           <FilledInput
+            required
             id="filled-adornment-password"
             type={showPassword ? "text" : "password"}
             value={passwordInput}

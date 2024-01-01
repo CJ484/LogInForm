@@ -39,21 +39,26 @@ const CreateNewUser = () => {
       toast.error("Passwords do not match");
       return;
     }
-    if (
-      !AddUser({
+    toast.promise(
+      AddUser({
         firstNameInput: firstNameInput,
         lastNameInput: lastNameInput,
         emailInput: emailInput,
         passwordCypherInput: passwordCypherInput,
-      }) === false
-    ) {
-      toast.success("User Creation Successful");
+      }),
+      {
+        loading: "Creating User...",
+        success: "User Creation Successful",
+        error: "User Creation Failed",
+      }
+    )
+    .then(() => {
       resetForm();
       push("/pages/login");
-    } else {
-      toast.error("User Creation Failed");
-      return;
-    }
+    })
+    .catch((error) => {
+      return error;
+    });
   };
 
   return (
