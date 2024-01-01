@@ -14,7 +14,7 @@ const AuthenticateLogin = async ({
   const apiUrlAuth = process.env.NEXT_PUBLIC_API_URL_AUTH;
   console.log(apiUrlAuth);
   
-  await axios
+  return await axios
     .post(apiUrlAuth!, {
       // @ts-ignore
       // This is a bug in the @types/axios package.
@@ -33,7 +33,7 @@ const AuthenticateLogin = async ({
     })
     .catch((error) => {
       console.log(error);
-      return error;
+      throw new Error("Log in failed");
     });
 };
 
