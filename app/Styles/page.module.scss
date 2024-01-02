@@ -2,7 +2,7 @@
 
 .main {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #E1FFBE;
+    background: url('../assets/Hexagon.svg');
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,6 @@
 }
 
 .page {
-    background: url('../assets/CloudyBackground.svg') no-repeat bottom;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -52,7 +51,6 @@
     padding: 0.5rem;
     border: none;
     border-radius: 1.1rem;
-
     font-size: 1rem;
     text-align: center;
     text-decoration: none;
@@ -61,7 +59,6 @@
     &:focus {
     outline: none;
     }
-
 }
 .backButton2 {
     background-color: rgb(248, 204, 46);
@@ -83,6 +80,11 @@
     margin: 0.5rem;
     &:focus {
     outline: none;
+    }
+    :hover {
+        background-color: rgba(248, 204, 46, 0.595);
+        color: white;
+        cursor: pointer;
     }
 
 }
@@ -131,6 +133,7 @@
     height: 60vh;
     width: 60vw;
     min-width: 280px;
+    max-width: 500px;
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.2rem;
@@ -163,6 +166,11 @@
         &:focus {
         outline: none;
         }
+        &:hover {
+            background-color: rgba(248, 204, 46, 0.595);
+            color: white;
+            cursor: pointer;
+        }
     }
 }
 
@@ -174,4 +182,3 @@
     margin: 1rem;
 }
 
-// button should be colored yellow
