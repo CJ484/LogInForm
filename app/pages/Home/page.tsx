@@ -1,6 +1,7 @@
 'use client';
 import React, {useState, useEffect} from 'react';
 import {Button, Input} from '@mui/joy';
+import {isEqual} from 'lodash';
 import {useRouter} from 'next/navigation';
 import toast, {Toaster} from 'react-hot-toast';
 import {LocateUser, UpdateInfo} from '../../api';
@@ -15,17 +16,22 @@ const Home = () => {
 	const [accountInfo, setAccountInfo] = useState({} as AccountInfoTypes);
 	const [logInToken, setLogInToken] = useState('' as string);
 	const [newPasswordInput, setNewPasswordInput] = useState('');
+	const [newPasswordConfirmInput, setNewPasswordConfirmInput] = useState('');
 	const {push} = useRouter();
 
-	const updatePassword = () => {
+	const updatePassword = async () => {
 		const idToken: string = sessionStorage.getItem('sessionToken')!;
-		// eslint-disable-next-line @typescript-eslint/no-floating-promises
-		toast.promise(UpdateInfo(idToken, newPasswordInput), {
-			loading: 'Updating Password...',
-			success: 'Password Updated',
-			error: (err: Error) => `${err.toString()}`,
-		});
-		setNewPasswordInput('');
+
+		if (isEqual(newPasswordInput, newPasswordConfirmInput)) {
+			await toast.promise(UpdateInfo(idToken, newPasswordInput), {
+				loading: 'Updating Password...',
+				success: 'Password Updated',
+				error: (err: Error) => `${err.toString()}`,
+			});
+			setNewPasswordInput('');
+		} else {
+			toast.error('Passwords do not match');
+		}
 	};
 
 	const logOut = () => {
@@ -54,7 +60,7 @@ const Home = () => {
 	}, [logInToken]);
 
 	return (
-		<div>
+		<div className={styles.homePage}>
 			<h1>Home Page</h1>
 			<h2>Welcome back!</h2>
 			<h2>
@@ -64,15 +70,24 @@ const Home = () => {
 			<div>
 				<Input
 					required
-					className={styles.form_input}
+					sx={{margin: '1rem'}}
 					placeholder='New Password'
 					value={newPasswordInput}
 					onChange={e => {
 						setNewPasswordInput(e.target.value);
 					}}
 				/>
+				<Input
+					required
+					sx={{margin: '1rem'}}
+					placeholder='Confirm New Password'
+					value={newPasswordConfirmInput}
+					onChange={e => {
+						setNewPasswordConfirmInput(e.target.value);
+					}}
+				/>
 				<Button sx={{margin: '1rem'}} onClick={() => {
-					updatePassword();
+					void updatePassword();
 				}}>
           Update Password
 				</Button>
