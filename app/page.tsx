@@ -7,7 +7,7 @@ import * as dotenv from "dotenv";
 const Home = () => {
   dotenv.config();
   return (
-    <main className={styles.main}>
+    <main>
       <h1 className={styles.title}>Authorization App</h1>
       <div className={styles.navigation}>
         <Link className={styles.nav_button} href="/pages/login">
