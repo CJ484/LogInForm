@@ -1,4 +1,4 @@
-import { CreateNewUser } from "@/app/Component"
+import { CreateNewUser } from "../../Component"
 import styles from "@/app/Styles/page.module.scss";
 const register = () => {
     return (
