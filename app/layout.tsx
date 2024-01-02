@@ -25,8 +25,6 @@ export default function RootLayout({
       </head>
       <body className={styles.main}>
         {children}
-        <div id="particles-js"></div>
-        <script src="particles.js"></script>
       </body>
     </html>
   );
