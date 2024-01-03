@@ -22,9 +22,9 @@ https://github.com/CJ484/BE_LogInForm
 
 ## Screenshots
 
-![App Screenshot](./assets/Images/screenshot_1.png)
-![App Screenshot](./assets/Images/screenshot_2.png)
-![App Screenshot](./assets/Images/screenshot_3.png)
+![App Screenshot](./assets/Images/Screenshot_1.png)
+![App Screenshot](./assets/Images/Screenshot_2.png)
+![App Screenshot](./assets/Images/Screenshot_3.png)
 
 
 ## Badges
