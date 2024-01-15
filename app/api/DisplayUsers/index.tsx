@@ -14,10 +14,6 @@ const DisplayUsers = async () => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
-		.then((response: any) => {
-			const data = response.data.results as User[];
-			return data;
 		});
 };
 
