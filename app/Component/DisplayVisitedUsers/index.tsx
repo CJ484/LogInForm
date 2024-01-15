@@ -1,3 +1,4 @@
+'use client';
 import React, {useState, useEffect} from 'react';
 import DisplayUsers from '../../api/DisplayUsers';
 import styles from '../../Styles/page.module.scss';
