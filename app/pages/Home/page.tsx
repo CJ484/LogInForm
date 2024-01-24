@@ -4,7 +4,7 @@ import {Button, Input} from '@mui/joy';
 import {isEqual} from 'lodash';
 import {useRouter} from 'next/navigation';
 import toast, {Toaster} from 'react-hot-toast';
-import {LocateUser, UpdateInfo} from '../../api';
+import {LocateUser, UpdateInfo, DeleteAccount} from '../../api';
 import styles from '../../Styles/page.module.scss';
 
 type AccountInfoTypes = {
@@ -34,6 +34,15 @@ const Home = () => {
 		}
 	};
 
+	const DeleteCurrentProfile = async () => {
+		await toast.promise(DeleteAccount(logInToken), {
+			loading: 'Deleting Account...',
+			success: 'Account Deleted',
+			error: (err: Error) => `${err.toString()}`,
+		});
+		logOut();
+	};
+
 	const logOut = () => {
 		sessionStorage.removeItem('sessionToken');
 		push('/');
@@ -51,11 +60,13 @@ const Home = () => {
 	useEffect(() => {
 		const idToken: string = sessionStorage.getItem('sessionToken')!;
 		if (idToken) {
-			LocateUser(idToken).then(data => {
-				setAccountInfo(data as unknown as AccountInfoTypes);
-			}).catch((error: Error) => {
-				console.log(error);
-			});
+			LocateUser(idToken)
+				.then(data => {
+					setAccountInfo(data as unknown as AccountInfoTypes);
+				})
+				.catch((error: Error) => {
+					console.log(error);
+				});
 		}
 	}, [logInToken]);
 
@@ -86,12 +97,24 @@ const Home = () => {
 						setNewPasswordConfirmInput(e.target.value);
 					}}
 				/>
-				<Button sx={{margin: '1rem'}} onClick={() => {
-					void updatePassword();
-				}}>
+				<Button
+					sx={{margin: '1rem'}}
+					onClick={() => {
+						void updatePassword();
+					}}
+				>
           Update Password
 				</Button>
 			</div>
+			<Button
+				sx={{margin: '1rem'}}
+				color='danger'
+				onClick={async () => {
+					await DeleteCurrentProfile();
+				}}
+			>
+        Delete Account
+			</Button>
 			<Button
 				sx={{margin: '1rem'}}
 				onClick={() => {
