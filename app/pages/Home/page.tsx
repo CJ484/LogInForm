@@ -35,7 +35,8 @@ const Home = () => {
 	};
 
 	const DeleteCurrentProfile = async () => {
-		await toast.promise(DeleteAccount(logInToken), {
+		const idToken: string = sessionStorage.getItem('sessionToken')!;
+		await toast.promise(DeleteAccount(idToken), {
 			loading: 'Deleting Account...',
 			success: 'Account Deleted',
 			error: (err: Error) => `${err.toString()}`,
