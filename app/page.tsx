@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import styles from './Styles/page.module.scss';
+import './Styles/globals.scss';
 import Link from 'next/link';
 import * as dotenv from 'dotenv';
 
@@ -8,6 +9,16 @@ const Home = () => {
 	dotenv.config();
 	return (
 		<main>
+			<div className={styles.gradientBg}>
+
+			<div className='gradients-container'>
+				<div className='g1'></div>
+				<div className='g2'></div>
+				<div className='g3'></div>
+				<div className='g4'></div>
+				<div className='g5'></div>
+			</div>
+			</div>
 			<h1 className={styles.title}>Authorization App</h1>
 			<div className={styles.navigation}>
 				<Link className={styles.nav_button} href='/pages/login'>

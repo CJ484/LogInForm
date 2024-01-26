@@ -24,7 +24,7 @@ export default function RootLayout({
 				<link rel='icon' type='image/x-icon' href='./assets/symbols/key.svg' />
 				<title>Authorization App</title>
 			</head>
-			<body className={styles.main}>
+			<body className={`${styles.main} ${styles.gradientBackground}`}>
 				{children}
 			</body>
 		</html>
