@@ -1,35 +1,54 @@
 'use client';
 import React from 'react';
 import styles from './Styles/page.module.scss';
-import './Styles/globals.scss';
 import Link from 'next/link';
 import * as dotenv from 'dotenv';
+import CursorEffect from './Component/CursorEffect';
 
 const Home = () => {
 	dotenv.config();
 	return (
 		<main>
-			<div className={styles.gradientBg}>
+			<svg>
+				<defs>
+					<filter id='goo'>
+						<feGaussianBlur in='SourceGraphic' stdDeviation='10' result='blur' />
+						<feColorMatrix
+							in='blur'
+							mode='matrix'
+							values='
+							1 0 0 0 0
+							0 1 0 0 0
+							0 0 1 0 0
+							0 0 0 20 -10'
+							result='goo'
+						/>
+						<feBlend in='SourceGraphic' in2='goo' />
+					</filter>
+				</defs>
+			</svg>
+			<div className={styles.graidentContainer}>
+				<div className={styles.g1}></div>
+				<div className={styles.g2}></div>
+				<div className={styles.g3}></div>
+				<div className={styles.g4}></div>
+				<div className={styles.g5}></div>
+				<CursorEffect />
+			</div>
+			<div className={styles.MainMenu}>
+				<h1 className={styles.title}>Authorization App</h1>
+				<div className={styles.navigation}>
+					<Link className={styles.nav_button} href='/pages/login'>
+						Log in
+					</Link>{' '}
+					<Link className={styles.nav_button} href='/pages/register'>
+						Register
+					</Link>{' '}
+					<Link className={styles.nav_button} href='/pages/displaydata'>
+						Previous Users
+					</Link>
+				</div>
 
-			<div className='gradients-container'>
-				<div className='g1'></div>
-				<div className='g2'></div>
-				<div className='g3'></div>
-				<div className='g4'></div>
-				<div className='g5'></div>
-			</div>
-			</div>
-			<h1 className={styles.title}>Authorization App</h1>
-			<div className={styles.navigation}>
-				<Link className={styles.nav_button} href='/pages/login'>
-          Log in
-				</Link>{' '}
-				<Link className={styles.nav_button} href='/pages/register'>
-          Register
-				</Link>{' '}
-				<Link className={styles.nav_button} href='/pages/displaydata'>
-          DisplayData
-				</Link>
 			</div>
 		</main>
 	);
