@@ -65,6 +65,8 @@ const CreateNewUser = () => {
 	return (
 		<>
 			<form onSubmit={submission} className={styles.form}>
+				<div className={styles.blurBackground}></div>
+
 				<Link href='/' className={styles.backButton}>
 					<BackButton />
           Go back
@@ -112,7 +114,6 @@ const CreateNewUser = () => {
 				/>
 				<Input
 					required
-
 					className={styles.form_input}
 					placeholder='Confirm Password'
 					value={passwordConfirmInput}
