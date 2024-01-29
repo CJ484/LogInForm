@@ -73,8 +73,9 @@ const UserLogIn = () => {
 					<h3>or Create an Account</h3>
 				</a>
 				<FormControl sx={{m: 1, width: '25ch'}} variant='filled'>
-					<InputLabel htmlFor='filled-adornment-email'>Email</InputLabel>
+					<InputLabel className={styles.form_input} htmlFor='filled-adornment-email'>Email</InputLabel>
 					<FilledInput
+						className={styles.form_input}
 						required
 						id='filled-adornment-email'
 						value={emailInput}
@@ -84,9 +85,10 @@ const UserLogIn = () => {
 					/>
 				</FormControl>
 				<FormControl sx={{m: 1, width: '25ch'}} variant='filled'>
-					<InputLabel htmlFor='filled-adornment-password'>Password</InputLabel>
+					<InputLabel className={styles.form_input} htmlFor='filled-adornment-password'>Password</InputLabel>
 					<FilledInput
 						required
+						className={styles.form_input}
 						id='filled-adornment-password'
 						type={showPassword ? 'text' : 'password'}
 						value={passwordInput}
