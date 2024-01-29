@@ -12,7 +12,11 @@ const Home = () => {
 			<svg>
 				<defs>
 					<filter id='goo'>
-						<feGaussianBlur in='SourceGraphic' stdDeviation='10' result='blur' />
+						<feGaussianBlur
+							in='SourceGraphic'
+							stdDeviation='10'
+							result='blur'
+						/>
 						<feColorMatrix
 							in='blur'
 							mode='matrix'
@@ -39,16 +43,15 @@ const Home = () => {
 				<h1 className={styles.title}>Authorization App</h1>
 				<div className={styles.navigation}>
 					<Link className={styles.nav_button} href='/pages/login'>
-						Log in
+						<p>Log in</p>
 					</Link>{' '}
 					<Link className={styles.nav_button} href='/pages/register'>
-						Register
+						<p>Register</p>
 					</Link>{' '}
 					<Link className={styles.nav_button} href='/pages/displaydata'>
-						Previous Users
+						<p>Previous Users</p>
 					</Link>
 				</div>
-
 			</div>
 		</main>
 	);
