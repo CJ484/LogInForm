@@ -73,6 +73,7 @@ const Home = () => {
 
 	return (
 		<div className={styles.homePage}>
+			<div className={styles.blurBackground}></div>
 			<h1>Home Page</h1>
 			<h2>Welcome back!</h2>
 			<h2>
